@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+    <encoder>
+      <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    </encoder>
+    </appender>
+ <appender name="FIX_WINDOW_BASED_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.base}/logs/fixWindowBasedlogFile.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        <fileNamePattern>${catalina.base}/logs/fixWindowBasedlogFile%i.log</fileNamePattern>
+        <minIndex>1</minIndex>
+        <maxIndex>20</maxIndex>
+    </rollingPolicy>
+ 
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+        <maxFileSize>50MB</maxFileSize>
+    </triggeringPolicy>
+     
+    <encoder>
+         <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    </encoder>
+</appender>  
+      <logger name="org.hibernate.type" level="OFF" />
+  <logger name="org.hibernate" level="OFF" />
+  
+  <logger name="org.hibernate">
+      <level value="OFF"/>
+      <appender-ref ref="stdout" />    
+    </logger>
+     <logger name="org.hibernate.type">
+      <level value="OFF"/>
+      <appender-ref ref="stdout" />    
+    </logger>
+  
+    <logger name="javax.faces">
+      <level value="DEBUG"/>
+      <appender-ref ref="stdout" />    
+    </logger>
+    <logger name="com.sun.faces">
+      <level value="DEBUG"/>
+      <appender-ref ref="stdout" />    
+    </logger>
+    <logger name="org.apache.myfaces">
+      <level value="DEBUG"/>
+      <appender-ref ref="stdout" />    
+    </logger>
+  
+  
+ 
+    <root level="info">
+     <!--   <appender-ref ref="FIX_WINDOW_BASED_FILE"/> -->
+      <appender-ref ref="stdout"/>
+    </root>
+</configuration>

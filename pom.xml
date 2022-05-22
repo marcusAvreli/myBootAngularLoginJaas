@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<groupId>myBootAngularLogin</groupId>
+	<artifactId>myBootAngularLogin</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>myBootAngularLogin</name>
+	<!-- FIXME change it to the project's website -->
+	<url>http://www.example.com</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		   
+		
+		<!-- DATA ACCESS PROPERTIES -->
+		<spring.data.jpa.version>2.2.6.RELEASE</spring.data.jpa.version>
+		<hibernate.version>5.3.6.Final</hibernate.version>
+		<derby.version>10.14.2.0</derby.version>
+<!-- KYLO PROPERTIES -->
+<javaee.api.version>6.0</javaee.api.version>
+<guava.jre.version>29.0-jre</guava.jre.version>
+<commons.lang3.version>3.11</commons.lang3.version>
+<jose4j.version>0.7.2</jose4j.version>
+<commons.io.version>2.6</commons.io.version>
+<modeshape.jcr.version>5.4.1.Final</modeshape.jcr.version>
+ <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+ <jackson.datatype.joda.version>2.11.2</jackson.datatype.joda.version>
+ <jackson.datatype.jsr310.version>2.11.2</jackson.datatype.jsr310.version>
+ <org.reflections.version>0.9.12</org.reflections.version>
+<!-- JWT PROPERTIES -->
+<jjwt.version>0.9.1</jjwt.version>
+		<!--LOGGING PROPERTIES -->
+		<slf4jVersion>1.6.1</slf4jVersion>
+	</properties>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>  
+		
+	
+     
+	</parent>
+		
+	
+
+	<dependencies>
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.11</version>
+		  <scope>test</scope>
+		</dependency>
+<!-- 
+KYLO DEPENDENCIES
+
+--> 	
+<!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+<dependency>
+    <groupId>org.reflections</groupId>
+    <artifactId>reflections</artifactId>
+    <version>${org.reflections.version}</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>${commons.io.version}</version>
+</dependency>
+	
+<!-- https://mvnrepository.com/artifact/org.modeshape/modeshape-jcr -->
+<dependency>
+    <groupId>org.modeshape</groupId>
+    <artifactId>modeshape-jcr</artifactId>
+    <version>${modeshape.jcr.version}</version>
+</dependency>
+
+		<dependency>
+		
+    <groupId>javax</groupId>
+    <artifactId>javaee-api</artifactId>
+    <version>${javaee.api.version}</version>
+    
+</dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-stream</artifactId>
+    
+    
+    </dependency>
+    <dependency>
+        	   <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-config-server</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-sleuth</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>${guava.jre.version}</version>
+    
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>${commons.lang3.version}</version>
+    
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.bitbucket.b_c/jose4j -->
+<dependency>
+    <groupId>org.bitbucket.b_c</groupId>
+    <artifactId>jose4j</artifactId>
+    <version>${jose4j.version}</version>
+    
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+    <version>${jackson.datatype.jsr310.version}</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-joda</artifactId>
+    <version>${jackson.datatype.joda.version}</version>
+</dependency>
+
+
+
+<!--
+	 SPRING	DEPENDENCIES	
+-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+             <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>    
+            
+		<!-- spring security-->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+                
+        <!-- spring data-->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>    
+		</dependency>
+		
+		<!--
+		 JWT DEPENDENCIES
+		-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jjwt.version}</version>
+			
+
+		</dependency>
+
+<!--
+	 DATABASE	ACCESS DEPENDENCIES
+-->
+    
+        <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+           <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>${derby.version}</version>
+		</dependency>
+
+	</dependencies>
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${spring-cloud.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+	<build>
+		<finalName>bootAngularLogin</finalName>
+	</build>
+</project>
